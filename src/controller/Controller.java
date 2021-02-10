@@ -28,7 +28,7 @@ public class Controller {
 		Scanner lector = new Scanner(System.in);
 		boolean fin = false;
 		String dato = "";
-		String respuesta = "";
+		Object respuesta = null;
 
 		while( !fin ){
 			view.printMenu();
@@ -57,7 +57,7 @@ public class Controller {
 					respuesta = modelo.buscar(dato);
 					if ( respuesta != null)
 					{
-						view.printMessage("Dato encontrado: "+ respuesta);
+						view.printMessage("Dato encontrado: "+ respuesta.toString());
 					}
 					else
 					{
@@ -72,7 +72,7 @@ public class Controller {
 					respuesta = modelo.eliminar(dato);
 					if ( respuesta != null)
 					{
-						view.printMessage("Dato eliminado "+ respuesta);
+						view.printMessage("Dato eliminado "+ respuesta.toString());
 					}
 					else
 					{
@@ -86,8 +86,14 @@ public class Controller {
 					view.printModelo(modelo);
 					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
 					break;	
+				
+				case 6:
+					view.printMessage("--------- \nInvertiendo Arreglo:");
+					modelo.invertir();
+					view.printModelo(modelo);
+					break;
 					
-				case 6: 
+				case 7: 
 					view.printMessage("--------- \n Hasta pronto !! \n---------"); 
 					lector.close();
 					fin = true;
