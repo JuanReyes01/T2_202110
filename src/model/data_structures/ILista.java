@@ -16,5 +16,4 @@ public interface ILista <T extends Comparable<T>>{
 	int isPresent(T element);
 	void exchange(int pos1, int pos2);
 	void changeInfo(int pos, T elem);
-	
 }
