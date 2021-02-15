@@ -2,6 +2,7 @@ package model.logic;
 
 import model.data_structures.ArregloDinamico;
 import model.data_structures.IArregloDinamico;
+import model.data_structures.ILista;
 
 /**
  * Definicion del modelo del mundo
@@ -18,7 +19,7 @@ public class Modelo {
 	 */
 	public Modelo()
 	{
-		datos = new ArregloDinamico(7);
+		datos = (IArregloDinamico) new ArregloDinamico(7);
 	}
 	
 	/**
@@ -27,7 +28,7 @@ public class Modelo {
 	 */
 	public Modelo(int capacidad)
 	{
-		datos = new ArregloDinamico(capacidad);
+		datos = (IArregloDinamico) new ArregloDinamico(capacidad);
 	}
 	
 	/**
@@ -75,4 +76,6 @@ public class Modelo {
 	public void invertir(){
 		datos.invertir();
 	}
+	
+	
 }

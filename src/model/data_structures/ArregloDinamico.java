@@ -1,5 +1,7 @@
 package model.data_structures;
 
+import java.util.ArrayList;
+
 /**
  * 2019-01-23
  * Estructura de Datos Arreglo Dinamico de Strings.
@@ -8,7 +10,7 @@ package model.data_structures;
  * @param <T>
  *
  */
-public class ArregloDinamico<T extends Comparable<T>> implements IArregloDinamico<T> { 
+public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> { 
 		/**
 		 * Capacidad maxima del arreglo
 		 */
@@ -21,6 +23,7 @@ public class ArregloDinamico<T extends Comparable<T>> implements IArregloDinamic
          * Arreglo de elementos de tamaNo maximo
          */
         private T elementos[ ];
+      
 
         /**
          * Construir un arreglo con la capacidad maxima inicial.
@@ -125,5 +128,128 @@ public class ArregloDinamico<T extends Comparable<T>> implements IArregloDinamic
 			}
 			elementos = invertida;
 		}
+
+@Override
+public void addFirst(T element) {
+	
+	agregar(element);
+}
+
+/**
+ * Agrega un elemento al final del arreglo.
+ */
+public void addLast(T element) {
+	elementos[tamanoAct-1] = element;
+	
+}
+
+/**
+ * Agrega un elemento que llega por parametro a la posicion deseada.
+ */
+public void insertElement(T element, int pos) {
+	elementos[pos] = element;
+}
+
+/**
+ * Elimina el primer elemento de la lista.
+ * @return Retorna el elemento eliminado.
+ */
+public T removeFirst() {
+	eliminar(elementos[0]);
+	return elementos[0];
+}
+
+/**
+ * Elimina el ultimo elemento de la lista.
+ * @return Retorna el elemento eliminado.
+ */
+public T removeLast() {
+	eliminar(elementos[tamanoAct-1]);
+	return elementos[tamanoAct-1];
+}
+
+/**
+ * Elimina el elemento en la posicion que llega por parametro.
+ * @return Retorna el elemento eliminado.
+ */
+public T deleteElement(int pos) {
+	eliminar(elementos[pos]);
+	return elementos[pos];
+}
+
+/**
+ * Devuelve el primer elemento del arreglo.
+ * @return Retorna el primer elemento del arreglo.
+ */
+public T firstElement() {
+	
+	return elementos[0];
+}
+
+/**
+ * Devuelve el ultimo elemento del arreglo.
+ * @return Retorna el ultimo elemento del arreglo.
+ */
+public T lastElement() {
+	
+	return elementos[tamanoAct-1];
+}
+
+/**
+ * Busca el elemento en la posicion que entra por parametro.
+ * @return el elemento en la posicion requerida.
+ */
+public T getElement(int pos) {
+
+	return elementos[pos];
+}
+
+/**
+ * Retorna el tamanio del arreglo.
+ * @return un int con el tamnio del arreglo
+ */
+public int size() {
+	return elementos.length;
+}
+
+/**
+ * Verifica si el arreglo esta vacio o no.
+ * @return True si el arreglo esta vacio, false de lo contrario.
+ */
+public boolean isEmpty() {
+	boolean x = true;
+	if(getElement(0)!= null ){
+		x =false;
+	}
+	return x;
+}
+
+/**
+* Retorna la posición de un elemento en la lista. 
+* @return Retorna 0 si encuntra el elemento, -1 si no lo encuentra.
+*/
+public int isPresent(T element) {
+	int x = -1;
+	if(buscar(element)!= null){
+		x =0;
+	}
+	return x;
+}
+
+/**	
+ * Intercambia la información de los elementos en dos posiciones válidas.
+ */
+public void exchange(int pos1, int pos2) {
+	
+	elementos[pos1] = elementos[pos2];
+}
+
+/**
+ * Actualiza el elemento en una posición válida de la lista.
+ */
+public void changeInfo(int pos, T elem) {
+	
+    elementos[pos] = elem;
+}
 			
 		}
