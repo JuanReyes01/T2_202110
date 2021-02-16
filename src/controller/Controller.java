@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import model.logic.Modelo;
@@ -93,11 +94,22 @@ public class Controller {
 					view.printModelo(modelo);
 					break;
 					
-				case 7: 
+				case 8: 
 					view.printMessage("--------- \n Hasta pronto !! \n---------"); 
 					lector.close();
 					fin = true;
 					break;	
+				case 7:
+				try {
+					String r = modelo.cargarDatos();
+					view.printMessage("------------------------------------------");
+					view.printMessage(r);
+					view.printMessage("Primer video: "+modelo.darArreglo().firstElement());
+					view.printMessage("Ultimo video: "+modelo.darArreglo().lastElement());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+					break;
 
 				default: 
 					view.printMessage("--------- \n Opcion Invalida !! \n---------");

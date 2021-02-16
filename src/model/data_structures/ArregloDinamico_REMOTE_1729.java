@@ -1,5 +1,7 @@
 package model.data_structures;
 
+import com.sun.xml.internal.bind.v2.model.util.ArrayInfoUtil;
+
 /**
  * 2019-01-23
  * Estructura de Datos Arreglo Dinamico de Strings.
@@ -21,7 +23,6 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
          * Arreglo de elementos de tamaNo maximo
          */
         private T elementos[ ];
-      
 
         /**
          * Construir un arreglo con la capacidad maxima inicial.
@@ -113,6 +114,7 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 			elementos = invertida;
 		}
 
+
 public void addFirst(T element) {
 	if ( tamanoAct == tamanoMax )
     {  // caso de arreglo lleno (aumentar tamaNo)
@@ -178,6 +180,7 @@ public void insertElement(T element, int pos) {
 		j++;
 	    }
 	}
+	
 }
 
 public T removeFirst() {
@@ -187,10 +190,11 @@ public T removeFirst() {
 		elementos[i] = elementos[i+1]; 
 	}
 	tamanoAct = tamanoAct-1;
+	
 	return eliminado;
 }
 
-
+@Override
 public T removeLast() {
 	T eliminado = null;
 	elementos[tamanoAct-1]=null;
@@ -198,6 +202,7 @@ public T removeLast() {
 	return eliminado;
 }
 
+@Override
 public T deleteElement(int pos) {
 	T eliminado = null;
 	//Le resto 1 a la posicion para compensar por la diferencia 
@@ -222,6 +227,7 @@ public T firstElement() {
 	
 	return elementos[0];
 }
+
 public T lastElement() {
 	//Como tamaño actual actua como .size() tengo que restar -1 
 	//para que me de la respuesta correcta
