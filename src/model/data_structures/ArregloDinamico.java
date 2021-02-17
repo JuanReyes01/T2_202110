@@ -27,13 +27,15 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
          * Construir un arreglo con la capacidad maxima inicial.
          * @param max Capacidad maxima inicial
          */
-		public ArregloDinamico( int max )
+		public ArregloDinamico( )
         {
-               elementos = (T[]) new Comparable[max];
-               tamanoMax = max;
+               elementos = (T[]) new Comparable[1];
+               tamanoMax = 1;
                tamanoAct = 0;
         }
- /**Implementacion original       
+ /**------------------------------------------------------
+  * Implementación original       
+  * ------------------------------------------------------
 		public void agregar( T dato )
         {
                if ( tamanoAct == tamanoMax )
@@ -101,10 +103,7 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 			
 			return eliminado;
 		}
-*/
-		//Dejo sin comentar el metodo invertir porque sigue implementado en la interfaz
-		//Este metodo no es parte de este lab porque no es parte del TAD (por eso no esta en el UML)
-		//es parte del pasado
+
 		public void invertir() {
 			T[] invertida = ( T[]) new Comparable[elementos.length];
 			for(int i=tamanoAct; i>0;i--){
@@ -112,6 +111,8 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 			}
 			elementos = invertida;
 		}
+		*--------------------------------------------------------------------------------
+		*/
 
 public void addFirst(T element) {
 	if ( tamanoAct == tamanoMax )

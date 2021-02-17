@@ -14,12 +14,12 @@ public class View
 	    
 		public void printMenu()
 		{
-			System.out.println("1. Crear Arreglo Dinamico de Strings");
-			System.out.println("2. Agregar String");
-			System.out.println("3. Buscar String");
-			System.out.println("4. Eliminar String");
+			System.out.println("1. Crear Arreglo Dinamico de Strings*Deshabilitado*");
+			System.out.println("2. Agregar String*Deshabilitado*");
+			System.out.println("3. Buscar String*Deshabilitado*");
+			System.out.println("4. Eliminar String*Deshabilitado*");
 			System.out.println("5. Imprimir el Arreglo");
-			System.out.println("6. Invertir el Arreglo");
+			System.out.println("6. Invertir el Arreglo *NO IMPLEMENTADO* ");
 			System.out.println("7. Cargar los datos del archivo CSV");
 			System.out.println("8. Exit");
 			System.out.println("Dar el numero de opcion a resolver, luego oprimir tecla Return: (e.g., 1):");

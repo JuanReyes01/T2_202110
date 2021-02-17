@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 import model.logic.Modelo;
@@ -37,25 +38,25 @@ public class Controller {
 			int option = lector.nextInt();
 			switch(option){
 				case 1:
-					view.printMessage("--------- \nCrear Arreglo \nDar capacidad inicial del arreglo: ");
+					view.printMessage("--------- \nCrear Arreglo \nDar capacidad inicial del arreglo: *Deshabilitado*");
 				    int capacidad = lector.nextInt();
-				    modelo = new Modelo(capacidad); 
+				    modelo = new Modelo(); 
 				    view.printMessage("Arreglo Dinamico creado");
 				    view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
 					break;
 
 				case 2:
-					view.printMessage("--------- \nDar cadena (simple) a ingresar: ");
+					view.printMessage("--------- \nDar cadena (simple) a ingresar: *Deshabilitado*");
 					dato = lector.next();
-					modelo.agregar(dato);
+					//modelo.agregar(dato);
 					view.printMessage("Dato agregado");
 					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
 					break;
 
 				case 3:
-					view.printMessage("--------- \nDar cadena (simple) a buscar: ");
+					view.printMessage("--------- \nDar cadena (simple) a buscar: *deshabilitado para YoutubeVideo*");
 					dato = lector.next();
-					respuesta = modelo.buscar(dato);
+					//respuesta = modelo.buscar(dato);
 					if ( respuesta != null)
 					{
 						view.printMessage("Dato encontrado: "+ respuesta.toString());
@@ -68,9 +69,9 @@ public class Controller {
 					break;
 
 				case 4:
-					view.printMessage("--------- \nDar cadena (simple) a eliminar: ");
+					view.printMessage("--------- \nDar cadena (simple) a eliminar: *deshabilitado para YoutubeVideo*");
 					dato = lector.next();
-					respuesta = modelo.eliminar(dato);
+					//respuesta = modelo.eliminar(dato);
 					if ( respuesta != null)
 					{
 						view.printMessage("Dato eliminado "+ respuesta.toString());
@@ -89,8 +90,8 @@ public class Controller {
 					break;	
 				
 				case 6:
-					view.printMessage("--------- \nInvertiendo Arreglo:");
-					modelo.invertir();
+					view.printMessage("--------- \nInvertiendo Arreglo:*Deshabilitado*");
+					//modelo.invertir();
 					view.printModelo(modelo);
 					break;
 					
@@ -101,11 +102,17 @@ public class Controller {
 					break;	
 				case 7:
 				try {
-					String r = modelo.cargarDatos();
+					String r;
+					try {
+						r = modelo.cargarDatos();
+					
 					view.printMessage("------------------------------------------");
 					view.printMessage(r);
-					view.printMessage("Primer video: "+modelo.darArreglo().firstElement());
-					view.printMessage("Ultimo video: "+modelo.darArreglo().lastElement());
+					view.printMessage("Primer video: titulo: "+modelo.darArreglo().firstElement().darTitulo()+", canal: "+modelo.darArreglo().firstElement().darCanal()+" ,país: "+modelo.darArreglo().firstElement().darPais());
+					view.printMessage("Ultimo video: titulo: "+modelo.darArreglo().lastElement().darTitulo()+", canal: "+modelo.darArreglo().lastElement().darCanal()+" ,país: "+modelo.darArreglo().lastElement().darPais());
+					} catch (ParseException e) {						
+						e.printStackTrace();
+					}
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
