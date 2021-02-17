@@ -29,13 +29,14 @@ public class Modelo {
 	/**
 	 * Atributos del modelo del mundo
 	 */
-	private ListaEncadenada<YoutubeVideo> datos;
+	private ILista<YoutubeVideo> datos;
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
 	 */
 	public Modelo()
 	{
+//		datos = new ArregloDinamico<YoutubeVideo>();
 		datos = new ListaEncadenada<YoutubeVideo>();
 	}
 	
@@ -95,10 +96,14 @@ public class Modelo {
 	//	datos.exchange(1, 3);
 	//}
 	
-	public ListaEncadenada<YoutubeVideo> darArreglo(){
+	public ILista<YoutubeVideo> darArreglo(){
 		return datos;
 	}
 	
+	
+	//NOTA
+	//Como estamos utilizando el TAD la opcion 1 y 2 se controlan desde el constructor de la clase Modelo()
+	//en este se puede cambiar entre ListaEnlazada o ArregloDinamico
 	public String cargarDatos() throws IOException, ParseException{
 		long miliI = System.currentTimeMillis();
 		Reader in = new FileReader("./data/videos-small.csv");
